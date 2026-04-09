@@ -135,7 +135,7 @@ export class FishingGameScene extends Phaser.Scene {
 
     try {
       // 새 캐릭터 스프라이트
-      this.charSprite = this.add.sprite(W * 0.22, H * 0.48, 'char_idle');
+      this.charSprite = this.add.sprite(W * 0.72, H * 0.48, 'char_idle');
       this.charSprite.setScale(2.5).setDepth(5).setFlipX(true);
       this.charSprite.play('anim_char_idle');
 
