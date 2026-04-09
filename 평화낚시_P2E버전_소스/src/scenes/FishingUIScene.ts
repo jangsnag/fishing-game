@@ -67,7 +67,7 @@ export class FishingUIScene extends Phaser.Scene {
 
     <!-- 낚시 기록 -->
     <div class="game-pixel-container-gray-700 p-3" style="height:140px;">
-      <div class="text-center text-gray-300 font-bold text-xl mb-2">📋 낚시 기록</div>
+      <div class="text-center text-gray-300 font-bold text-xl mb-2"></div>
       <div id="game-log" class="text-xl pointer-events-auto" style="overflow-y:scroll;height:90px;scrollbar-width:thin;scrollbar-color:#9CA3AF #4B5563;">
         <div class="text-gray-400">낚시를 시작해보세요!</div>
       </div>
