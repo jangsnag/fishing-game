@@ -20,15 +20,19 @@ export class FishingGameScene extends Phaser.Scene {
   public failCount: number = 0;
   public fishCollection: { [key: string]: number } = {};
 
-  // P2E 시스템
+  // P2E
   public inventory: { [key: string]: number } = {};
   public equipment: any[] = [];
+  public equippedItem: any = null;
   public wallet: number = 0;
   public coinPrice: number = 100;
   public coinHistory: number[] = [100, 100];
   public nftMarket: any[] = [];
-
   public gameLog: string[] = [];
+
+  // 장착 능력치 (실제 적용)
+  public bonusSpeed: number = 0;   // 낚시속도 보너스 (waitTime 감소%)
+  public bonusLuck: number = 0;    // 획득률 보너스 (successRate 증가%)
 
   // 사운드
   public castSound?: Phaser.Sound.BaseSound;
@@ -49,7 +53,7 @@ export class FishingGameScene extends Phaser.Scene {
     this.junkData = gameConfig.fishData.value.junk;
     this.materialData = (gameConfig.fishData.value as any).materials;
     this.coinData = (gameConfig.fishData.value as any).coins;
-    this.fishingSettings = gameConfig.fishingSettings.value;
+    this.fishingSettings = { ...gameConfig.fishingSettings.value };
 
     this.initializeFishCollection();
     this.initializeInventory();
@@ -97,15 +101,33 @@ export class FishingGameScene extends Phaser.Scene {
     try { this.castSound = this.sound.add("fishing_cast", { volume: 0.3 }); } catch(e) {}
     try { this.biteSound = this.sound.add("fishing_bite", { volume: 0.3 }); } catch(e) {}
     try { this.successSound = this.sound.add("fishing_success", { volume: 0.5 }); } catch(e) {}
-    // 실패 사운드 - bite 사운드를 낮은 피치로 재활용
-    try { this.failSound = this.sound.add("fishing_bite", { volume: 0.2, rate: 0.5 }); } catch(e) {}
+    try { this.failSound = this.sound.add("fishing_bite", { volume: 0.15, rate: 0.4 }); } catch(e) {}
   }
 
-  // 코인 시세 변동 (10초마다)
+  // 장비 장착 - 능력치 실제 적용
+  equipItem(eq: any) {
+    this.equippedItem = eq;
+    this.bonusSpeed = eq ? (eq.stats["낚시속도"] || 0) : 0;
+    this.bonusLuck  = eq ? (eq.stats["획득률"] || 0) : 0;
+    this.addToLog(`⚔️ [${eq ? eq.name : "없음"}] 장착! 속도+${this.bonusSpeed}% 획득률+${this.bonusLuck}%`);
+    this.events.emit("updateEquipped", this.equippedItem);
+  }
+
+  // 실제 적용된 대기시간 계산
+  getWaitTime(): number {
+    const base = Phaser.Math.Between(this.fishingSettings.waitTimeMin, this.fishingSettings.waitTimeMax);
+    const speedMult = 1 - Math.min(this.bonusSpeed / 100, 0.8); // 최대 80% 감소
+    return Math.round(base * speedMult);
+  }
+
+  // 실제 적용된 성공률 계산
+  getSuccessRate(): number {
+    return Math.min(this.fishingSettings.successRate + this.bonusLuck / 100, 0.98);
+  }
+
   startCoinPriceFluctuation() {
     this.time.addEvent({
-      delay: 10000,
-      loop: true,
+      delay: 10000, loop: true,
       callback: () => {
         const change = Phaser.Math.Between(-20, 25);
         this.coinPrice = Math.max(10, Math.min(1000, this.coinPrice + change));
@@ -143,9 +165,8 @@ export class FishingGameScene extends Phaser.Scene {
     if (!this.isAutoFishing) return;
     this.fishingState = "waiting";
     this.player.setFishingState("waiting");
-    this.updateStatusText("입질 기다리는 중...");
-    const waitTime = Phaser.Math.Between(this.fishingSettings.waitTimeMin, this.fishingSettings.waitTimeMax);
-    this.stateTimer = this.time.delayedCall(waitTime, () => this.startBiteState());
+    this.updateStatusText(`입질 기다리는 중... (속도+${this.bonusSpeed}%)`);
+    this.stateTimer = this.time.delayedCall(this.getWaitTime(), () => this.startBiteState());
   }
 
   startBiteState() {
@@ -159,7 +180,7 @@ export class FishingGameScene extends Phaser.Scene {
 
   processFishingResult() {
     this.totalTries++;
-    const isSuccess = Math.random() < this.fishingSettings.successRate;
+    const isSuccess = Math.random() < this.getSuccessRate();
     if (isSuccess) {
       this.successTries++;
       this.successCount++;
@@ -178,21 +199,18 @@ export class FishingGameScene extends Phaser.Scene {
     const s = this.fishingSettings as any;
 
     if (rand < s.coinRate) {
-      // 코인 획득
       const coin = Phaser.Utils.Array.GetRandom(this.coinData);
       this.wallet += coin.amount;
       this.addToLog(`✅ 성공! ${coin.icon} ${coin.name} +${coin.amount}코인`);
       this.events.emit("showResultCard", { item: { ...coin, type: "coin" }, itemType: "코인" });
       this.events.emit("updateWallet", this.wallet);
     } else if (rand < s.coinRate + s.materialRate) {
-      // 재료 획득
       const mat = Phaser.Utils.Array.GetRandom(this.materialData);
       this.inventory[mat.key] = (this.inventory[mat.key] || 0) + 1;
       this.addToLog(`✅ 성공! ${mat.icon} ${mat.name} 획득 (${this.inventory[mat.key]}개)`);
       this.events.emit("showResultCard", { item: { ...mat, type: "material" }, itemType: "재료" });
       this.events.emit("updateInventory", this.inventory);
     } else {
-      // 물고기 or 잡템
       const isFish = Math.random() < this.fishingSettings.fishRate;
       if (isFish) {
         const fish = Phaser.Utils.Array.GetRandom(this.fishData);
@@ -209,12 +227,10 @@ export class FishingGameScene extends Phaser.Scene {
 
   handleFailedCatch() {
     if (gameConfig.soundEnabled.value && this.failSound) this.failSound.play();
-    this.cameras.main.flash(300, 255, 50, 50, false);
     this.addToLog("❌ 실패! 놓쳤다...");
     this.events.emit("showFailEffect");
   }
 
-  // 장비 제작
   craftEquipment(recipe: any): boolean {
     for (const [k, v] of Object.entries(recipe.materials)) {
       if ((this.inventory[k] || 0) < (v as number)) return false;
@@ -229,6 +245,7 @@ export class FishingGameScene extends Phaser.Scene {
       stats: Object.fromEntries(Object.entries(recipe.stats).map(([k, v]) => [k, Math.round((v as number) * bonus)])),
       craftedAt: new Date().toLocaleString(),
       onMarket: false,
+      equipped: false,
       marketPrice: Math.round(recipe.basePrice * bonus)
     };
     this.equipment.push(eq);
@@ -238,10 +255,10 @@ export class FishingGameScene extends Phaser.Scene {
     return true;
   }
 
-  // 마켓 등록
   listOnMarket(eqId: number, price: number) {
     const eq = this.equipment.find((e: any) => e.id === eqId);
     if (!eq || eq.onMarket) return;
+    if (eq.equipped) { this.equipItem(null); }
     eq.onMarket = true;
     eq.marketPrice = price;
     this.nftMarket.push(eq);
@@ -250,7 +267,6 @@ export class FishingGameScene extends Phaser.Scene {
     this.events.emit("updateEquipment", this.equipment);
   }
 
-  // NPC 구매 시뮬레이션
   simulateMarketBuy() {
     if (this.nftMarket.length === 0) return;
     const idx = Phaser.Math.Between(0, this.nftMarket.length - 1);
@@ -282,11 +298,7 @@ export class FishingGameScene extends Phaser.Scene {
 
   updateStatistics() {
     const successRate = this.totalTries > 0 ? Math.round((this.successTries / this.totalTries) * 100) : 0;
-    this.events.emit("updateStatistics", {
-      successCount: this.successCount,
-      failCount: this.failCount,
-      successRate
-    });
+    this.events.emit("updateStatistics", { successCount: this.successCount, failCount: this.failCount, successRate });
   }
 
   addToLog(message: string) {
