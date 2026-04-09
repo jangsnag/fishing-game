@@ -1,0 +1,114 @@
+{
+  "fishingSettings": {
+    "value": {
+      "castingTime": 1000,
+      "waitTimeMin": 5000,
+      "waitTimeMax": 15000,
+      "biteTime": 1600,
+      "successRate": 0.7,
+      "fishRate": 0.6,
+      "materialRate": 0.25,
+      "coinRate": 0.15,
+      "waitAfterFishing": 1500
+    },
+    "type": "object",
+    "description": "Fishing game timing and probability settings"
+  },
+  "fishData": {
+    "value": {
+      "fish": [
+        {"key": "fish_crucian", "name": "붕어", "rarity": "common", "color": "#4A90E2", "sellPrice": 10},
+        {"key": "fish_carp", "name": "잉어", "rarity": "common", "color": "#4A90E2", "sellPrice": 15},
+        {"key": "fish_bass", "name": "배스", "rarity": "uncommon", "color": "#27AE60", "sellPrice": 30},
+        {"key": "fish_catfish", "name": "메기", "rarity": "uncommon", "color": "#27AE60", "sellPrice": 35},
+        {"key": "fish_golden_crucian", "name": "황금 붕어", "rarity": "rare", "color": "#FFD700", "sellPrice": 100},
+        {"key": "fish_dragon", "name": "용어", "rarity": "epic", "color": "#E74C3C", "sellPrice": 300},
+        {"key": "fish_legendary_crucian", "name": "전설 붕어", "rarity": "legend", "color": "#9B59B6", "sellPrice": 500}
+      ],
+      "junk": [
+        {"key": "junk_bottle", "name": "페트병", "rarity": "junk", "color": "#95A5A6", "sellPrice": 1},
+        {"key": "junk_can", "name": "깡통", "rarity": "junk", "color": "#95A5A6", "sellPrice": 1},
+        {"key": "junk_boot", "name": "낡은 장화", "rarity": "junk", "color": "#95A5A6", "sellPrice": 2},
+        {"key": "junk_ring", "name": "빛바랜 반지", "rarity": "rare", "color": "#FFD700", "sellPrice": 50}
+      ],
+      "materials": [
+        {"key": "mat_wood", "name": "물에 젖은 나무", "rarity": "common", "icon": "🪵", "sellPrice": 5},
+        {"key": "mat_iron", "name": "녹슨 철광석", "rarity": "common", "icon": "⚙️", "sellPrice": 8},
+        {"key": "mat_crystal", "name": "수정 조각", "rarity": "uncommon", "icon": "💎", "sellPrice": 25},
+        {"key": "mat_dragon_scale", "name": "용의 비늘", "rarity": "rare", "icon": "🐉", "sellPrice": 80},
+        {"key": "mat_magic_stone", "name": "마법석", "rarity": "epic", "icon": "🔮", "sellPrice": 150},
+        {"key": "mat_ancient_ore", "name": "고대 광석", "rarity": "legend", "icon": "✨", "sellPrice": 300}
+      ],
+      "coins": [
+        {"key": "coin_copper", "name": "동전", "rarity": "common", "icon": "🪙", "amount": 5},
+        {"key": "coin_silver", "name": "은화", "rarity": "uncommon", "icon": "💰", "amount": 20},
+        {"key": "coin_gold", "name": "금화", "rarity": "rare", "icon": "🏅", "amount": 100},
+        {"key": "coin_ancient", "name": "고대 주화", "rarity": "legend", "icon": "🌟", "amount": 500}
+      ]
+    },
+    "type": "object"
+  },
+  "equipmentRecipes": {
+    "value": [
+      {
+        "key": "eq_fishing_rod_iron",
+        "name": "철제 낚싯대",
+        "icon": "🎣",
+        "rarity": "uncommon",
+        "stats": {"luck": 10, "speed": 5},
+        "materials": {"mat_wood": 3, "mat_iron": 2},
+        "basePrice": 200
+      },
+      {
+        "key": "eq_crystal_rod",
+        "name": "수정 낚싯대",
+        "icon": "🔱",
+        "rarity": "rare",
+        "stats": {"luck": 25, "speed": 15},
+        "materials": {"mat_crystal": 3, "mat_iron": 5},
+        "basePrice": 800
+      },
+      {
+        "key": "eq_armor_iron",
+        "name": "철제 갑옷",
+        "icon": "🛡️",
+        "rarity": "uncommon",
+        "stats": {"defense": 20, "luck": 5},
+        "materials": {"mat_iron": 8, "mat_wood": 2},
+        "basePrice": 350
+      },
+      {
+        "key": "eq_ring_magic",
+        "name": "마법 반지",
+        "icon": "💍",
+        "rarity": "rare",
+        "stats": {"luck": 30, "magic": 20},
+        "materials": {"mat_magic_stone": 2, "mat_crystal": 3},
+        "basePrice": 1200
+      },
+      {
+        "key": "eq_dragon_armor",
+        "name": "용의 갑옷",
+        "icon": "⚔️",
+        "rarity": "epic",
+        "stats": {"defense": 50, "luck": 40, "magic": 30},
+        "materials": {"mat_dragon_scale": 5, "mat_ancient_ore": 3, "mat_magic_stone": 3},
+        "basePrice": 5000
+      },
+      {
+        "key": "eq_legend_rod",
+        "name": "전설의 낚싯대",
+        "icon": "🌈",
+        "rarity": "legend",
+        "stats": {"luck": 100, "speed": 50, "magic": 50},
+        "materials": {"mat_ancient_ore": 5, "mat_dragon_scale": 3, "mat_magic_stone": 5},
+        "basePrice": 15000
+      }
+    ],
+    "type": "array"
+  },
+  "gameWidth": {"value": 768, "type": "number"},
+  "gameHeight": {"value": 1152, "type": "number"},
+  "soundEnabled": {"value": true, "type": "boolean"},
+  "musicEnabled": {"value": true, "type": "boolean"}
+}

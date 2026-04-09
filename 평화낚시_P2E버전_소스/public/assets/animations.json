@@ -1,0 +1,106 @@
+{
+  "anims": [
+    {
+      "key": "fisherman_idle_side_anim",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "fisherman_idle_side_frame1",
+          "duration": 600
+        },
+        {
+          "key": "fisherman_idle_side_frame2",
+          "duration": 600
+        }
+      ],
+      "repeat": -1,
+      "originX": 0.5,
+      "originY": 1.0
+    },
+    {
+      "key": "fisherman_idle_front_anim",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "fisherman_idle_front_frame1",
+          "duration": 600
+        },
+        {
+          "key": "fisherman_idle_front_frame2",
+          "duration": 600
+        }
+      ],
+      "repeat": -1,
+      "originX": 0.5,
+      "originY": 1.0
+    },
+    {
+      "key": "fisherman_idle_back_anim",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "fisherman_idle_back_frame1",
+          "duration": 600
+        },
+        {
+          "key": "fisherman_idle_back_frame2",
+          "duration": 600
+        }
+      ],
+      "repeat": -1,
+      "originX": 0.5,
+      "originY": 1.0
+    },
+    {
+      "key": "fisherman_cast_side_anim",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "fisherman_cast_side_frame1",
+          "duration": 800
+        },
+        {
+          "key": "fisherman_cast_side_frame2",
+          "duration": 800
+        }
+      ],
+      "repeat": -1,
+      "originX": 0.267,
+      "originY": 1.0
+    },
+    {
+      "key": "fisherman_pull_side_anim",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "fisherman_pull_side_frame1",
+          "duration": 500
+        },
+        {
+          "key": "fisherman_pull_side_frame2",
+          "duration": 500
+        }
+      ],
+      "repeat": -1,
+      "originX": 0.265,
+      "originY": 1.0
+    },
+    {
+      "key": "fisherman_waiting_side_anim",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "fisherman_pull_side_frame1",
+          "duration": 1500
+        },
+        {
+          "key": "fisherman_pull_side_frame2",
+          "duration": 1500
+        }
+      ],
+      "repeat": -1,
+      "originX": 0.265,
+      "originY": 1.0
+    }
+  ]
+}

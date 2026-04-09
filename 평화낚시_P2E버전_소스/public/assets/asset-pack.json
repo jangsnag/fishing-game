@@ -1,0 +1,195 @@
+{
+  "animation_json": {
+    "files": [
+      {
+        "url": "assets/animations.json",
+        "type": "animation",
+        "key": "animations"
+      }
+    ]
+  },
+  "fonts": {
+    "files": [
+      {
+        "url": "assets/fronts/retro-pixel-arcade.otf.woff2",
+        "type": "font",
+        "key": "RetroPixel",
+        "fontType": "opentype"
+      },
+      {
+        "url": "assets/fronts/supercell-magic_0.ttf",
+        "type": "font",
+        "key": "SupercellMagic",
+        "fontType": "opentype"
+      }
+    ]
+  },
+  "tilemaps": {
+    "files": [
+    ]
+  },
+  "tilesets": {
+    "files": [
+    ]
+  },
+  "backgrounds": {
+    "files": [
+      {
+        "type": "image",
+        "key": "lake_background",
+        "url": "https://cdn-game-mcp.gambo.ai/ff6a54bb-d70b-4dde-9168-6a5c20e0349d/images/lake_background.png"
+      }
+    ]
+  },
+  "ui_images": {
+    "files": [
+      {
+        "type": "image",
+        "key": "fishing_game_title",
+        "url": "https://cdn-game-mcp.gambo.ai/fca8c02c-201a-4f77-988d-d4d06db6db61/images/fishing_game_title.png"
+      }
+    ]
+  },
+  "game_objects": {
+    "files": [
+      {
+        "type": "image",
+        "key": "wooden_dock",
+        "url": "https://cdn-game-mcp.gambo.ai/faa3c497-b4e3-451b-8218-7a753ea16103/images/wooden_dock.png"
+      },
+      {
+        "type": "image",
+        "key": "fishing_float",
+        "url": "https://cdn-game-mcp.gambo.ai/882f0f3f-2be2-4ece-b4c4-ad6b323e95dd/images/fishing_float.png"
+      },
+      {
+        "type": "image",
+        "key": "fish_carp",
+        "url": "https://cdn-game-mcp.gambo.ai/8204abb4-2ed3-4885-85da-9bcbfc3f0fb3/images/fish_carp.png"
+      },
+      {
+        "type": "image",
+        "key": "fish_crucian",
+        "url": "https://cdn-game-mcp.gambo.ai/e9470711-e10b-40fa-aa3b-f6b23acb161d/images/fish_crucian.png"
+      },
+      {
+        "type": "image",
+        "key": "fish_golden_crucian",
+        "url": "https://cdn-game-mcp.gambo.ai/ec52a658-5e33-4115-9ac5-177f73e15b04/images/fish_golden_crucian.png"
+      },
+      {
+        "type": "image",
+        "key": "fish_legendary_crucian",
+        "url": "https://cdn-game-mcp.gambo.ai/3641b841-a81c-4ab0-8fad-af198ac36df9/images/fish_legendary_crucian.png"
+      },
+      {
+        "type": "image",
+        "key": "junk_bottle",
+        "url": "https://cdn-game-mcp.gambo.ai/e933a334-1259-4ed1-83e3-8b0c493b742c/images/junk_bottle.png"
+      },
+      {
+        "type": "image",
+        "key": "junk_can",
+        "url": "https://cdn-game-mcp.gambo.ai/727a43bf-42d5-4eae-908d-da88fc6f801f/images/junk_can.png"
+      },
+      {
+        "type": "image",
+        "key": "junk_boot",
+        "url": "https://cdn-game-mcp.gambo.ai/08133676-bafa-4525-ae81-6ca1a9e0edec/images/junk_boot.png"
+      },
+      {
+        "type": "image",
+        "key": "junk_ring",
+        "url": "https://cdn-game-mcp.gambo.ai/d851e144-e3f2-44e7-8e75-b815b23faa08/images/junk_ring.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_idle_side_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/42ad2578-b260-49f2-b3cc-d75f4c98dfd7/animations/fisherman_idle_side_anim/frame_1.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_idle_side_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/ae8c60d7-75df-4b99-a9ad-c958997d48b4/animations/fisherman_idle_side_anim/frame_2.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_idle_front_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/e3c2edad-d6d9-45d2-b84e-9640aea94db8/animations/fisherman_idle_front_anim/frame_1.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_idle_front_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/3ad713e6-712c-496e-971a-f105dd2fb331/animations/fisherman_idle_front_anim/frame_2.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_idle_back_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/bba54768-e19e-4552-ba84-595022550a8c/animations/fisherman_idle_back_anim/frame_1.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_idle_back_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/79c9ed3a-71dd-4781-a687-a7d24f4fb4f3/animations/fisherman_idle_back_anim/frame_2.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_cast_side_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/7375afcf-80b8-4a8e-b778-7e7534625511/animations/fisherman_cast_side_anim/frame_1.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_cast_side_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/672aeca8-965f-49ef-872d-fde0855fb478/animations/fisherman_cast_side_anim/frame_2.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_pull_side_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/b15be669-b831-49e6-bfb7-ef5beb8f504f/animations/fisherman_pull_side_anim/frame_1.png"
+      },
+      {
+        "type": "image",
+        "key": "fisherman_pull_side_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/e33a709a-113b-48b2-9fdc-3b41682c9f03/animations/fisherman_pull_side_anim/frame_2.png"
+      }
+    ]
+  },
+  "sound_effects": {
+    "files": [
+      {
+        "type": "audio",
+        "key": "fishing_cast",
+        "url": "https://cdn-game-mcp.gambo.ai/6eb4acde-e291-4946-a333-f5a29141eb2a/sound_effects/fishing_cast.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "fishing_bite",
+        "url": "https://cdn-game-mcp.gambo.ai/f31383fc-60be-4798-829a-5c4fe986a55b/sound_effects/fishing_bite.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "fishing_success",
+        "url": "https://cdn-game-mcp.gambo.ai/f3b0f4ee-8fd2-4549-988d-90a90f49bdd2/sound_effects/fishing_success.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "ui_click",
+        "url": "https://cdn-game-mcp.gambo.ai/8b464d88-55f7-4213-8f28-42440d4f3e0b/sound_effects/ui_click.mp3"
+      }
+    ]
+  },
+  "background_musics": {
+    "files": [
+      {
+        "type": "audio",
+        "key": "peaceful_lake_theme",
+        "url": "https://cdn-game-mcp.gambo.ai/073a1bd9-191b-4f63-b26e-d8725b7b4915/music/peaceful_lake_theme.wav"
+      }
+    ]
+  },
+  "meta": {
+    "app": "Gambo AI",
+    "version": 1,
+    "showAllFilesInBlocks": false
+  }
+}
