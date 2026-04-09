@@ -147,12 +147,6 @@ export class FishingGameScene extends Phaser.Scene {
   
   }
 
-  createPlayer() {
-    const player = new FisherPlayer(
-      this, gameConfig.gameWidth.value * 0.25, gameConfig.gameHeight.value * 0.5
-    );
-    player.setDirection("side");
-  }
 
   createFloatingFish() {
     const W = gameConfig.gameWidth.value;
