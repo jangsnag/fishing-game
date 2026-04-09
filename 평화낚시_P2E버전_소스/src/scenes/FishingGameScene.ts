@@ -1,12 +1,12 @@
 import Phaser from "phaser";
-import { FisherPlayer } from "../FisherPlayer";
+
 import * as utils from "../utils";
 import * as gameConfig from "../gameConfig.json";
 
 type FishingState = "idle" | "casting" | "waiting" | "pulling" | "finishing";
 
 export class FishingGameScene extends Phaser.Scene {
-  public player!: FisherPlayer;
+ 
   public woodenDock!: Phaser.GameObjects.Image;
   public background!: Phaser.GameObjects.Image;
   public fishingState: FishingState = "idle";
