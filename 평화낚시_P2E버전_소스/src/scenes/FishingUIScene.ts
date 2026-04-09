@@ -192,7 +192,7 @@ export class FishingUIScene extends Phaser.Scene {
       const el = document.getElementById("wallet-amount");
       if (el) el.textContent = v.toLocaleString();
     });
-    this.gameScene.events.on("updateCoinPrice", (v: number) => {
+    this.gameScene.events.on("updateCoinPrice", (data: any) => { const v = data.price || data;
       const el = document.getElementById("coin-price");
       if (el) el.textContent = v.toLocaleString();
     });
