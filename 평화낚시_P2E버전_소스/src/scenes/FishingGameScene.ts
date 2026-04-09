@@ -1,12 +1,10 @@
 import Phaser from "phaser";
-
 import * as utils from "../utils";
 import * as gameConfig from "../gameConfig.json";
 
 type FishingState = "idle" | "casting" | "waiting" | "pulling" | "finishing";
 
 export class FishingGameScene extends Phaser.Scene {
- 
   public woodenDock!: Phaser.GameObjects.Image;
   public background!: Phaser.GameObjects.Image;
   public fishingState: FishingState = "idle";
@@ -144,9 +142,10 @@ export class FishingGameScene extends Phaser.Scene {
       // 캐치 이펙트 스프라이트
       this.catchEffect = this.add.sprite(W * 0.55, H * 0.48, 'catch_sheet');
       this.catchEffect.setScale(2).setDepth(6).setVisible(false);
-  
+    } catch(e) {
+      console.log("캐릭터 스프라이트 로드 실패", e);
+    }
   }
-
 
   createFloatingFish() {
     const W = gameConfig.gameWidth.value;
